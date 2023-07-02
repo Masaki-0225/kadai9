@@ -1,6 +1,7 @@
 package com.example.kadai9;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -9,8 +10,11 @@ public class NameController {
 
     private final NameService nameService;
 
-    public NameController(NameService nameService) {
+    private final NameMapper nameMapper;
+
+    public NameController(NameService nameService, NameMapper nameMapper) {
         this.nameService = nameService;
+        this.nameMapper = nameMapper;
     }
 
 
@@ -21,5 +25,9 @@ public class NameController {
         return nameResponses;
     }
 
+    @GetMapping("/names/{id}")
+    public Name findNameById(@PathVariable("id") int id){
+        return nameService.findById(id);
+    }
 
 }
