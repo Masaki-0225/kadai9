@@ -26,8 +26,7 @@ public class NameController {
     }
 
     @GetMapping("/names/{id}")
-    public Name findNameById(@PathVariable("id") int id){
+    public Name findNameById(@PathVariable("id") int id) throws Exception {
         return nameService.findById(id);
     }
-
 }
