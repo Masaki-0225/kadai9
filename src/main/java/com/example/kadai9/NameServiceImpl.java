@@ -1,11 +1,7 @@
 package com.example.kadai9;
 
-import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 public class NameServiceImpl implements NameService{
