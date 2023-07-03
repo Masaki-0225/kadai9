@@ -10,11 +10,9 @@ public class NameController {
 
     private final NameService nameService;
 
-    private final NameMapper nameMapper;
 
-    public NameController(NameService nameService, NameMapper nameMapper) {
+    public NameController(NameService nameService) {
         this.nameService = nameService;
-        this.nameMapper = nameMapper;
     }
 
 
