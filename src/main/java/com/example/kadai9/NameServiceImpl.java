@@ -1,5 +1,6 @@
 package com.example.kadai9;
 
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.Optional;
 
 @Service
 public class NameServiceImpl implements NameService{
-    private NameMapper nameMapper;
+    private final NameMapper nameMapper;
 
     public NameServiceImpl(NameMapper nameMapper) {
         this.nameMapper = nameMapper;
@@ -21,13 +22,7 @@ public class NameServiceImpl implements NameService{
 
     @Override
     public Name findById(int id) throws Exception {
-        Optional<Name> name =nameMapper.findById(id);
-        try {
-            name.orElseThrow();
-            return name.get();
-        }catch (NoSuchElementException ex){
-            throw new Exception("name not found for id:" + id);
-        }
+        return nameMapper.findById(id).orElseThrow(() -> new Exception("name not found for id:" + id));
     }
 
     @Override
