@@ -1,10 +1,12 @@
-package com.example.kadai9;
+package com.example.kadai9.service;
 
+import com.example.kadai9.entity.Name;
+import com.example.kadai9.mapper.NameMapper;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class NameServiceImpl implements NameService{
+public class NameServiceImpl implements NameService {
     private final NameMapper nameMapper;
 
     public NameServiceImpl(NameMapper nameMapper) {
@@ -22,7 +24,10 @@ public class NameServiceImpl implements NameService{
     }
 
     @Override
-    public void create(String name) {
+    public Name createName(String name, int age){
+        Name names = new Name(name ,age);
+     nameMapper.createName(names);
+     return names;
 
     }
 
@@ -30,4 +35,6 @@ public class NameServiceImpl implements NameService{
     public void update(int id, String name) throws Exception {
 
     }
+
+
 }

@@ -1,4 +1,6 @@
-package com.example.kadai9;
+package com.example.kadai9.service;
+
+import com.example.kadai9.entity.Name;
 
 import java.util.List;
 
@@ -7,7 +9,7 @@ public interface NameService {
 
     Name findById(int id) throws Exception;
 
-    void create(String name);
+    public Name  createName(String name, int age);
 
     void update(int id,String name ) throws Exception;
 }
