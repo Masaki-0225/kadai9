@@ -11,6 +11,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
+
 @RestController
 public class NameController {
 
@@ -23,7 +25,7 @@ public class NameController {
 
 
     @GetMapping("/names")
-    public List<NameResponse> names(){
+    public List<NameResponse> names() {
         List<Name> names = nameService.findAll();
         List<NameResponse> nameResponses = names.stream().map(NameResponse::new).toList();
         return nameResponses;
@@ -35,13 +37,13 @@ public class NameController {
     }
 
     @PostMapping("/names")
-    public ResponseEntity<String> create(
-            @RequestBody @Valid CreateForm form, UriComponentsBuilder uriBuilder){
-        Name names = nameService.createName(form.getName(),form.getAge());
+    public ResponseEntity<Map<String, String>> create(
+            @RequestBody @Valid CreateForm form, UriComponentsBuilder uriBuilder) {
+        Name names = nameService.createName(form.getName(), form.getAge());
         URI url = uriBuilder
                 .path("/names/" + names.getId())
                 .build()
                 .toUri();
-        return ResponseEntity.created(url).body("登録完了です");
+        return ResponseEntity.created(url).body(Map.of("message", "Name created successfully!!!"));
     }
 }

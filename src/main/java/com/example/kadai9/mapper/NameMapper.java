@@ -16,6 +16,6 @@ public interface NameMapper {
     @Select("SELECT * FROM names WHERE id = #{id}")
     Optional<Name> findById(int id);
 
-    @Insert("insert into names (id,name,age) values (#{id},#{name},#{age})")
-    public void createName(Name name) ;
+    @Insert("insert into names (name,age) values (#{name},#{age})")
+    public void createName(Name name);
 }
