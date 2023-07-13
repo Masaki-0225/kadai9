@@ -26,9 +26,9 @@ public class NameServiceImpl implements NameService {
 
     @Override
     public Name createName(String name, int age) {
-        Name newname = new Name(name, age);
-        nameMapper.createName(newname);
-        return newname;
+        Name newName = new Name(name, age);
+        nameMapper.createName(newName);
+        return newName;
 
     }
 
