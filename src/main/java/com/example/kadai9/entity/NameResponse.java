@@ -1,4 +1,6 @@
-package com.example.kadai9;
+package com.example.kadai9.entity;
+
+import com.example.kadai9.entity.Name;
 
 public class NameResponse {
 

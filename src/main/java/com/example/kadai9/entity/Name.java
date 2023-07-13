@@ -1,4 +1,4 @@
-package com.example.kadai9;
+package com.example.kadai9.entity;
 
 public class Name {
     private  int id;
@@ -7,8 +7,14 @@ public class Name {
 
     private int age;
 
+
     public Name(int id, String name, int age) {
         this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public Name(String name, int age) {
         this.name = name;
         this.age = age;
     }
