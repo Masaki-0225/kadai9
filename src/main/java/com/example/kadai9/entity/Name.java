@@ -1,7 +1,7 @@
 package com.example.kadai9.entity;
 
 public class Name {
-    private  int id;
+    private int id;
 
     private String name;
 
@@ -29,5 +29,8 @@ public class Name {
 
     public int getAge() {
         return age;
+    }
+
+    public void update(String name, int age) {
     }
 }

@@ -33,9 +33,10 @@ public class NameServiceImpl implements NameService {
     }
 
     @Override
-    public void update(int id, String name) throws Exception {
-
+    public Name updateName(int id, String name, int age) {
+        Name newName = new Name(id, name, age);
+        nameMapper.updateName(newName);
+        return newName;
     }
-
 
 }

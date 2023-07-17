@@ -9,7 +9,7 @@ public interface NameService {
 
     Name findById(int id) throws Exception;
 
-    public Name  createName(String name, int age);
+    public Name createName(String name, int age);
 
-    void update(int id,String name ) throws Exception;
+    Name updateName(int id, String name, int age);
 }
