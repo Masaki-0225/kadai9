@@ -51,7 +51,6 @@ public class NameController {
     public ResponseEntity<Map<String, String>>
     update(@PathVariable("id") int id, @RequestBody @Valid UpdateForm form) throws NotFoundException {
         nameService.updateName(id, form.getName(), form.getAge());
-        Name name = new Name(id, form.getName(), form.getAge());
         return ResponseEntity.ok(Map.of("message", "Name was successfully updated"));
     }
 }
