@@ -12,4 +12,5 @@ public interface NameService {
     public Name createName(String name, int age);
 
     Name updateName(int id, String name, int age);
+
 }

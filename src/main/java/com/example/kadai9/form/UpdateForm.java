@@ -1,12 +1,10 @@
 package com.example.kadai9.form;
 
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 public class UpdateForm {
-
-    @NotEmpty(message = "名前が未入力です")
+    
     @Size(max = 20, message = "名前は２０文字以内で入力してください!!")
     private String name;
 

@@ -30,7 +30,4 @@ public class Name {
     public int getAge() {
         return age;
     }
-
-    public void update(String name, int age) {
-    }
 }

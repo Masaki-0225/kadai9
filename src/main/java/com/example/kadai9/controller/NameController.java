@@ -28,7 +28,6 @@ public class NameController {
     @GetMapping("/names")
     public List<Name> names() {
         List<Name> names = nameService.findAll();
-//        List<NameResponse> nameResponses = names.stream().map(NameResponse::new).toList();
         return names;
     }
 
@@ -52,6 +51,7 @@ public class NameController {
     public ResponseEntity<Map<String, String>>
     update(@PathVariable("id") int id, @RequestBody @Valid UpdateForm form) throws NotFoundException {
         nameService.updateName(id, form.getName(), form.getAge());
-        return ResponseEntity.ok(Map.of("message", "Name update successfully"));
+        Name name = new Name(id, form.getName(), form.getAge());
+        return ResponseEntity.ok(Map.of("message", "Name was successfully updated"));
     }
 }
