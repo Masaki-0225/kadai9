@@ -50,7 +50,7 @@ public class NameController {
     @PatchMapping("/names/{id}")
     public ResponseEntity<Map<String, String>>
     update(@PathVariable("id") int id, @RequestBody @Valid UpdateForm form) throws NotFoundException {
-        nameService.updateName(id, form.getName(), form.getAge());
+        nameService.updateName(form.UpdateForm(id));
         return ResponseEntity.ok(Map.of("message", "Name was successfully updated"));
     }
 }
