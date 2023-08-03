@@ -1,8 +1,8 @@
 package com.example.kadai9.controller;
 
 import com.example.kadai9.entity.Name;
-import com.example.kadai9.entity.NameResponse;
 import com.example.kadai9.form.CreateForm;
+import com.example.kadai9.form.UpdateForm;
 import com.example.kadai9.service.NameService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +25,9 @@ public class NameController {
 
 
     @GetMapping("/names")
-    public List<NameResponse> names() {
+    public List<Name> names() {
         List<Name> names = nameService.findAll();
-        List<NameResponse> nameResponses = names.stream().map(NameResponse::new).toList();
-        return nameResponses;
+        return names;
     }
 
     @GetMapping("/names/{id}")
@@ -45,5 +44,12 @@ public class NameController {
                 .build()
                 .toUri();
         return ResponseEntity.created(url).body(Map.of("message", "Name created successfully!!!"));
+    }
+
+    @PatchMapping("/names/{id}")
+    public ResponseEntity<Map<String, String>>
+    update(@PathVariable("id") int id, @RequestBody @Valid UpdateForm form) throws Exception {
+        nameService.updateName(id, form.getName(), form.getAge());
+        return ResponseEntity.ok(Map.of("message", "Name was successfully updated"));
     }
 }

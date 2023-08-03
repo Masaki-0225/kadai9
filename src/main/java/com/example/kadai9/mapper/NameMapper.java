@@ -4,6 +4,7 @@ import com.example.kadai9.entity.Name;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,4 +19,7 @@ public interface NameMapper {
 
     @Insert("insert into names (name,age) values (#{name},#{age})")
     public void createName(Name name);
+
+    @Update("update names set name = #{name}, age = #{age} where id = #{id}")
+    public void updateName(Name name);
 }
