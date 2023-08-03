@@ -11,5 +11,5 @@ public interface NameService {
 
     public Name createName(String name, Integer age);
 
-    Name updateName(Name updateForm);
+    Name updateName(int id, String name, Integer age) throws Exception;
 }

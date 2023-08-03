@@ -20,9 +20,8 @@ public class NameServiceImpl implements NameService {
     }
 
     @Override
-    public Name findById(int id) {
-        return nameMapper.findById(id);
-//                .orElseThrow(() -> new Exception("name not found for id:" + id));
+    public Name findById(int id) throws Exception {
+        return nameMapper.findById(id).orElseThrow(() -> new Exception("name not found for id:" + id));
     }
 
     @Override
@@ -34,9 +33,9 @@ public class NameServiceImpl implements NameService {
     }
 
     @Override
-    public Name updateName(Name updateForm) {
-        Name newName = nameMapper.findById(updateForm.getId());
-        newName.update(updateForm.getName(), updateForm.getAge());
+    public Name updateName(int id, String name, Integer age) throws Exception {
+        Name newName = nameMapper.findById(id).orElseThrow(() -> new Exception("name not found for id:" + id));
+        newName.update(name, age);
         nameMapper.updateName(newName);
         return newName;
     }

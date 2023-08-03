@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface NameMapper {
@@ -14,7 +15,7 @@ public interface NameMapper {
     List<Name> findAll();
 
     @Select("SELECT * FROM names WHERE id = #{id}")
-    Name findById(int id);
+    Optional<Name> findById(int id);
 
     @Insert("insert into names (name,age) values (#{name},#{age})")
     public void createName(Name name);

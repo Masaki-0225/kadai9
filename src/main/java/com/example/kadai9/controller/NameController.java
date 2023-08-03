@@ -5,7 +5,6 @@ import com.example.kadai9.form.CreateForm;
 import com.example.kadai9.form.UpdateForm;
 import com.example.kadai9.service.NameService;
 import jakarta.validation.Valid;
-import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -49,8 +48,8 @@ public class NameController {
 
     @PatchMapping("/names/{id}")
     public ResponseEntity<Map<String, String>>
-    update(@PathVariable("id") int id, @RequestBody @Valid UpdateForm form) throws NotFoundException {
-        nameService.updateName(form.UpdateForm(id));
+    update(@PathVariable("id") int id, @RequestBody @Valid UpdateForm form) throws Exception {
+        nameService.updateName(id, form.getName(), form.getAge());
         return ResponseEntity.ok(Map.of("message", "Name was successfully updated"));
     }
 }
